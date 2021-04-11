@@ -1,3 +1,6 @@
+import random
+import pyperclip
+
 class User:
 
     '''
@@ -17,4 +20,3 @@ class User:
         '''
 
         User.user_list.append(self)
-        
