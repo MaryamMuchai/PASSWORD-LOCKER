@@ -46,5 +46,10 @@ def delete_accounts(self):
     method to delete an account
     '''
     Records.account_records.remove(self)
-    
 
+@classmethod
+def display_account():
+    '''
+    class method that displays all given accounts
+    '''
+    
