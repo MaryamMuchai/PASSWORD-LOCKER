@@ -97,6 +97,7 @@ def main():
 				print('welcome: {entered_user_name} to your account')
 				print('\n')
 
+		
 		elif short_code == 'ln':
 			print('welcome')
 			print('enter user name')
@@ -106,8 +107,8 @@ def main():
 			print('enter password')
 			default_user_password = input()
 			print('\n')
-			while default_user_name != 'user' or default_user_password !='1234':
-				print('Wrong username or password. Username "user" and password "1234"') 
+			while default_user_name != 'user' or default_user_password !='0123':
+				print("Wrong username or password. Username 'user' and password '0123'") 
 				print('enter user name')
 				default_user_name = input()
 
@@ -119,15 +120,26 @@ def main():
 				print('\n')
 				print('\n')
 
+        elif short_code == 'dis':
+            if display_account() !=[]:
+                print('\n')
+                print('Here is a list of all yor accounts:\n')
+                for item in display_account():
+                    print(item.account_name+"\t -->"+ item.user_name +"\t-->"+item.user_password)
+            else:
+                print('\n')
+                print('you dont have any saved accounts')
+
         elif short_code == 'del':
-            print('Enter the account name you want to deleteeg:Twitter')
+            print('\n')
+            print('Enter the account name you want to delete eg:Twitter')
             item = input()
             if search_accounts(item):
                 delete_accounts(search_accounts(item))
                 print('\n')
                 print("The account has been deleted")
-            else("There is no record of the item you are trying to delete")
-        
+            else:
+                print("There is no record of the item you are trying to delete")
 
 		elif short_code == 'ex':
             print('\n')
