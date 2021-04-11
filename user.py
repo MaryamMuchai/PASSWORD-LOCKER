@@ -22,18 +22,20 @@ class User:
         User.user_list.append(self)
 
 class Records:
-    '''
-    class that creates new account credentials
-    '''
-    account_records=[] #showing the list of all accounts
+        '''
+        class that creates new account credentials
+        '''
+        account_records=[] #showing the list of all account
 
-    def__init__(self, account_name, user_name, password = None):
-    '''
-    initialization of the account object
-    '''
-    self.account_name = account_name
-    self.user_name = Username
-    self.password = password if password else Records.password_generate()
+def __init__(self, account_name, user_name, password):
+
+        '''
+        initialization of the account object
+        '''
+
+        self.new_account=new_user
+        self.user_name = Username
+        self.password = password if password else Records.password_generate()
 
 def save_accounts(self):
     '''
@@ -59,5 +61,5 @@ def search_accounts(cls, search):
     '''
     class method that searchs an account
     '''
-    
+
 
