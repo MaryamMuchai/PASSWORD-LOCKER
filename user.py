@@ -35,4 +35,9 @@ class Records:
     self.user_name = Username
     self.password = password if password else Records.password_generate()
 
-
+def save_accounts(self):
+    '''
+    method to save account object
+    '''
+    Records.account_records.append(self)
+    
