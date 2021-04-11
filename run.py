@@ -57,7 +57,7 @@ def main():
 	while True:
 		print("Welcome to password locker!!!")
 		print('\n')
-		print("select the following to proceed:\n \t\t nw- To create new user use: \n \t\t ln - To login to your account use : \n \t\t dis - To Display Credentials use: \n \t\t Del -To Delete: \n \t\t ex- to Exit")
+		print("select the following to proceed:\n \t\t nw-To create new user \n \t\t ln-To login to your account \n \t\t dis-To Display Credentials \n \t\t del-To Delete: \n \t\t ex- to Exit")
 		short_code = input().lower()
 		print('\n')
 
@@ -118,7 +118,20 @@ def main():
 				print('login success')
 				print('\n')
 				print('\n')
+
+        elif short_code == 'del':
+            print('Enter the account name you want to deleteeg:Twitter')
+            item = input()
+            if search_accounts(item):
+                delete_accounts(search_accounts(item))
+                print('\n')
+                print("The account has been deleted")
+            else("There is no record of the item you are trying to delete")
+        
+
 		elif short_code == 'ex':
+            print('\n')
+            print(f"Have a lovely day, {user_name}")
 			  break
 
 		else:
