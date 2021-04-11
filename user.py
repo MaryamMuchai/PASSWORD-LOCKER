@@ -1,5 +1,6 @@
 import random
 import pyperclip
+import string
 
 class User:
 
@@ -28,7 +29,7 @@ def __init__(self, account_name, user_name, password):
         '''
 
         self.new_account=new_user
-        self.user_name = Username
+        self.user_name = username
         self.password = password if password else Records.password_generate()
 
 def __init__(self, username, password):
@@ -74,7 +75,7 @@ class Records():
                     a_user == user.username
         return a_user
 
-    def __init__(self,account,userName, password):
+    def __init__(self,account,username, password):
         """
         method that defines user store records
         """
@@ -121,7 +122,14 @@ class Records():
 
         """
         return cls.records_list
-
-    def generate_Password(stringLength=8):
-        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
-        return ''.join(random.choice(password) for i in range(stringLength))
+    @classmethod
+    def generate_password(stringLength=8):
+        password_length = 8
+        password_characters = string.ascii_letters + string.digits + string.punctuation
+        password = []
+        for x in range(password_length):
+            password.append(random.choice(password_characters))
+        password1 = ''
+        password1=password1.join(password)
+        print("Your generated password :", password1)
+        return password

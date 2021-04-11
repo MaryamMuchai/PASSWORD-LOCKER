@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.8
 import random
 from user import User , Records
 
@@ -51,7 +52,7 @@ def generate_password():
 	'''
     generating password
     '''
-	auto_password=Records.generatePassword()
+	auto_password=Records.generate_password()
 	return auto_password
 
 def copy_password(acc):
@@ -84,14 +85,14 @@ def find_record(acc):
 
 def main():
 	while True:
-		print("Welcome to password locker !!!")
 		print('\n')
+		print("Welcome to password locker !!!")
 		print("select the following to proceed:\n \t\t nw-To create new user \n \t\t ln-To login to your account \n \t\t dis-To Display Credentials \n \t\t del-To Delete: \n \t\t ex- to Exit")
 		short_code = input().lower()
 		print('\n')
 		if short_code == 'nw':
 			print('create username')
-			created_user_name = input()
+			username = input()
 			while True:
 				print(" TP - To type your own pasword:\n GP - To generate random Password")
 				password_Choice = input().lower().strip()
@@ -99,12 +100,13 @@ def main():
 					password = input("Enter Password\n")
 					break
 				elif password_Choice == 'gp':
-					password = generate_Password()
+					password = generate_password()
 					break
 				else:
 					print("Invalid password please try again")
-			save_user(create_user(username,password))
-			print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
+			
+				save_user(create_user(username,password))
+				print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
 			
 		elif short_code == 'ln':
 			print('welcome')
@@ -122,13 +124,13 @@ def main():
 				print('\n')
 			else:
 				print('login success')
-				print("Hello %s Welcome to the locker manager"%(created_user_name))
+				print("Hello %s Welcome to the locker manager"%(username))
 				print('\n')	
 		elif short_code == 'dis':
-			if display_acc():
+			if display_accounts_details():
 				print('Here is a list of all yor accounts:\n')
-				for account in display_acc():
-					print(f" Acc:{acc.acc} \n User Name:{created_user_name}\n Password:{created_user_password}")
+				for account in display_accounts_details():
+					print(f" Acc:{acc.acc} \n User Name:{username}\n Password:{created_user_password}")
 			else:
 				print('\n')
 				print('you dont have any saved accounts')
@@ -145,18 +147,17 @@ def main():
 		elif short_code == 'del':
 			print('\n')
 			print('Enter the account name you want to delete eg:Twitter')
-			search_accounts = input().lower()
-			if find_acc(search_acc):
-				search_acc.delete_accounts()
+			search_accounts2 = input().lower()
+			if find_record(search_accounts2):
+				#search_accounts.delete_accounts()
 				print('\n')
-				print("The account: {search_acc.acc} has been deleted")
+				print("The account: {search_accounts.accounts} has been deleted")
 				print('\n')
 			else:
 				print("There is no record of the item you are trying to delete")
 				
 		elif short_code == 'ex':
-			print('\n')
-			print(f"Have a lovely day, {user_name}")
+			print(f"Have a lovely time!")
 			break
 		
 		else:
