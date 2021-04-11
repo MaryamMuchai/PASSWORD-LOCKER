@@ -15,7 +15,7 @@ def save_user(user):
     '''
     function to save a new user
     '''
-    data.save_user()
+    user.save_user()
 
 
 def create_account(account, user, password):
@@ -48,11 +48,11 @@ def search_accounts(search):
 
 
 def generate_password():
-    '''
+	'''
     generating password
     '''
-    auto_password=Records.generatePassword()
-return auto_password
+	auto_password=Records.generatePassword()
+	return auto_password
 
 def copy_password(acc):
 	return Records.copy_password(acc)
@@ -93,20 +93,19 @@ def main():
 			print('create username')
 			created_user_name = input()
 			while True:
-			    print("\n \t\t tp- To type your own password \n \t\t gp- To generate random password")
-			    password_choice = input().lower()
-			    if password_choice == 'tp':
-				    password = input("Enter your password\n")
-				    break
-				
-		elif short_code == 'gp':
-				password = generate_password()
-				break
-		else:
-				print("invalid password please try again")
-				save_user(create_user(username,password))
-				print(f"Hello {created_user_name}, You have successfully created an account. You password is: {created_user_password}")	
-		
+				print(" TP - To type your own pasword:\n GP - To generate random Password")
+				password_Choice = input().lower().strip()
+				if password_Choice == 'tp':
+					password = input("Enter Password\n")
+					break
+				elif password_Choice == 'gp':
+					password = generate_Password()
+					break
+				else:
+					print("Invalid password please try again")
+			save_user(create_user(username,password))
+			print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
+			
 		elif short_code == 'ln':
 			print('welcome')
 			print('enter user name')
@@ -123,7 +122,7 @@ def main():
 				print('\n')
 			else:
 				print('login success')
-				print(f"Hello {created_user_name} Welcome to the locker manager")
+				print("Hello %s Welcome to the locker manager"%(created_user_name))
 				print('\n')	
 		elif short_code == 'dis':
 			if display_acc():

@@ -122,6 +122,6 @@ class Records():
         """
         return cls.records_list
 
-    def generatePassword(stringLength=8):
+    def generate_Password(stringLength=8):
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
         return ''.join(random.choice(password) for i in range(stringLength))
