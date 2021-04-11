@@ -20,11 +20,6 @@ class User:
         '''
         User.user_list.append(self)
 
-class Records:
-        '''
-        class that creates new account credentials
-        '''
-        account_records=[] #showing the list of all account
 
 def __init__(self, account_name, user_name, password):
 
@@ -67,7 +62,7 @@ class Records():
     """
     Create records class to help create new objects 
     """
-    recordss_list = []
+    records_list = []
     @classmethod
     def verify_user(cls,username, password):
         """
@@ -89,20 +84,20 @@ class Records():
     
     def save_details(self):
         """
-        method to store a new credential to the credentials list
+        method to store a new records
         """
         Records.recordss_list.append(self)
 
-    def delete_credentials(self):
+    def delete_records(self):
         """
-        delete_credentials method that deletes an account credentials from the credentials_list
+        delete accounts
         """
         Records.records_list.remove(self)
     
     @classmethod
     def find_records(cls, account):
         """
-        Method that takes in a account_name and returns a credential that matches that account_name.
+        Method that takes in a account name and returns a record that matches.
 
         """
         for records in cls.records_list:
@@ -115,9 +110,6 @@ class Records():
 
     @classmethod
     def if_records_exist(cls, account):
-        """
-        Method that checks if a credential exists from the credential list and returns true or false depending if the credential exists.
-        """
         for records in cls.records_list:
             if records.account == account:
                 return True
@@ -125,12 +117,11 @@ class Records():
     @classmethod
     def display_records(cls):
         """
-        Method that returns all items in the credentials list
+        Method that returns all items in the record 
 
         """
         return cls.records_list
 
     def generatePassword(stringLength=8):
-        """Generate a random password string of letters and digits and special characters"""
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
         return ''.join(random.choice(password) for i in range(stringLength))

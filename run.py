@@ -1,16 +1,17 @@
 import random
-from user import User
+from user import User , Records
 
 
-def create_user(user, password):
+
+def create_user(username, password):
     '''
     function to create a new user
     '''
-    new_user = User(user, password)
-    return new_user
+    user = User(username, password)
+    return user
 
 
-def save_user(data):
+def save_user(user):
     '''
     function to save a new user
     '''
@@ -21,8 +22,8 @@ def create_account(account, user, password):
     '''
     function to a new a/c
     '''
-    new_account = Records(account, user, password)
-    return new_account
+    new_record = Records(account, user, password)
+    return new_record
 
 
 def save_accounts(records):
@@ -32,11 +33,11 @@ def save_accounts(records):
     records.save_accounts()
 
 
-def delete_accounts(records):
+def delete_records(records):
     '''
     function to deleting an a/c
     '''
-    records.delete_accounts()
+    records.delete_records()
 
 
 def search_accounts(search):
@@ -50,15 +51,35 @@ def generate_password():
     '''
     generating password
     '''
-    random_password = Record.password_generate()
-    return random_password
+    auto_password=Records.generatePassword()
+return auto_password
+
+def copy_password(acc):
+	return Records.copy_password(acc)
 
 
-def display_account():
+def display_accounts_details():
     '''
     function to display all accounts
     '''
-    return records.display_account()
+    return Records.display_records()
+
+def login_user(username,password):
+	'''
+	checks for user and logs in
+	'''
+
+	check_user = Records.verify_user(username,password)
+	return check_user
+
+def check_records(account):
+	'''
+	creates new records
+	'''
+	return Records.if_records_exist(acc)
+
+def find_record(acc):
+	return Records.find_records(acc)
 
 
 def main():
@@ -81,11 +102,10 @@ def main():
 		elif short_code == 'gp':
 				password = generate_password()
 				break
-			
-		#else:
-				#print("invalid password please try again")
-				#save_user(create_user(username,password))
-				#print(f"Hello {created_user_name}, You have successfully created an account. You password is: {created_user_password}")
+		else:
+				print("invalid password please try again")
+				save_user(create_user(username,password))
+				print(f"Hello {created_user_name}, You have successfully created an account. You password is: {created_user_password}")	
 		
 		elif short_code == 'ln':
 			print('welcome')
@@ -103,23 +123,23 @@ def main():
 				print('\n')
 			else:
 				print('login success')
-				print(f"Hello {created_user_name}Welcome to the locker manager")
+				print(f"Hello {created_user_name} Welcome to the locker manager")
 				print('\n')	
 		elif short_code == 'dis':
-			if display_account() != []:
+			if display_acc():
 				print('Here is a list of all yor accounts:\n')
-				for account in display_account():
-					print(f" Account:{account.account} \n User Name:{created_user_name}\n Password:{created_user_password}")
+				for account in display_acc():
+					print(f" Acc:{acc.acc} \n User Name:{created_user_name}\n Password:{created_user_password}")
 			else:
 				print('\n')
 				print('you dont have any saved accounts')
 		elif short_code == "fa":
 			print("Enter the name of the account you want to serach for")
-			search_accounts = input().lower
-			if find_records(search_accounts):
-				search_accounts = find_records(search_accounts)
-				print(f"Account Name : {search_accounts}")
-				print(f"User Name: {search_accounts.user_name} password:{search_accounts.password}")
+			search_acc = input().lower
+			if find_records(search_acc):
+				search_acc = find_records(search_accounts)
+				print(f"Account Name : {search_acc}")
+				print(f"User Name: {search_acc.user_name} password:{search_acc.password}")
 			else:
 				print("That Credential does not exist")
 				print('\n')
@@ -127,10 +147,10 @@ def main():
 			print('\n')
 			print('Enter the account name you want to delete eg:Twitter')
 			search_accounts = input().lower()
-			if find_accounts(search_accounts):
-				search_accounts.delete_accounts()
+			if find_acc(search_acc):
+				search_acc.delete_accounts()
 				print('\n')
-				print("The account: {search_accounts.account} has been deleted")
+				print("The account: {search_acc.acc} has been deleted")
 				print('\n')
 			else:
 				print("There is no record of the item you are trying to delete")
