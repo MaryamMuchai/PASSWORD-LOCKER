@@ -20,3 +20,9 @@ class User:
         '''
 
         User.user_list.append(self)
+
+class Records:
+    '''
+    class that creates new account credentials
+    '''
+    account_records=[] #showing the list of all accounts
