@@ -40,4 +40,11 @@ def save_accounts(self):
     method to save account object
     '''
     Records.account_records.append(self)
+
+def delete_accounts(self):
+    '''
+    method to delete an account
+    '''
+    Records.account_records.remove(self)
     
+
