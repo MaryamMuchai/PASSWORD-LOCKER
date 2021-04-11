@@ -48,8 +48,16 @@ def delete_accounts(self):
     Records.account_records.remove(self)
 
 @classmethod
-def display_account():
+def display_account(cls):
     '''
     class method that displays all given accounts
     '''
+    return cls.account_records
+
+@classmethod
+def search_accounts(cls, search):
+    '''
+    class method that searchs an account
+    '''
     
+
