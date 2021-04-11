@@ -126,11 +126,12 @@ def main():
 		elif short_code == 'del':
 			print('\n')
 			print('Enter the account name you want to delete eg:Twitter')
-			item = input()
-			if search_accounts(item):
-				delete_accounts(search_accounts(item))
+			search_accounts = input().lower()
+			if find_accounts(search_accounts):
+				search_accounts.delete_accounts()
 				print('\n')
-				print("The account has been deleted")
+				print("The account: {search_accounts.account} has been deleted")
+				print('\n')
 			else:
 				print("There is no record of the item you are trying to delete")
 				
