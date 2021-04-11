@@ -77,7 +77,7 @@ def check_records(account):
 	'''
 	creates new records
 	'''
-	return Records.if_records_exist(acc)
+	return Records.if_records_exist(account)
 
 def find_record(acc):
 	return Records.find_records(acc)
@@ -130,7 +130,7 @@ def main():
 			if display_accounts_details():
 				print('Here is a list of all yor accounts:\n')
 				for account in display_accounts_details():
-					print(f" Acc:{acc.acc} \n User Name:{username}\n Password:{created_user_password}")
+					print(f" Acc:{account.acc} \n User Name:{username}\n Password:{password}")
 			else:
 				print('\n')
 				print('you dont have any saved accounts')
