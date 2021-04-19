@@ -3,86 +3,92 @@ from user import User
 from user import Records
 
 class UserTest(unittest.TestCase):
-  '''
-  test class that defines test cases for the user class
-  '''
-  def setUp(self):
-      self.new_uset = User('User','0123')
-
-  def tearDown(self):
-      '''
-      method called after each user
-      '''
-      User.user =[]
-
-  def test_init(self):
-       '''
-       test method for correct initialization
-       '''
-       self.assertEqual(self.username, 'User')
-       self.assertEqual(self.password, '0123')
-
-  def test_save_user(self):
-      '''
-      test method if user has been saved
-      '''
-      self.user.save_user()
-      self.assertEqual(len(User.user),1)
-
-class Test(unittest.TestCase):
+    
+    '''
+    test class that defines test cases for the user class
+    '''
     def setUp(self):
-        '''
-        method for each test
-        '''
-        self.account_records= Records('twitter')
-
-    def tearDown(self):
-        '''
-        method for each test
-        '''
-        Records.account_records = []
+        self.new_user = User('User','0123')
 
     def test_init(self):
         '''
-        proper initialization
+        test case to check if its initialized properly
         '''
-        self.assertEqual(self.account.account_records, 'twitter')
-        self.assertEqual(self.account.username,'User')
-        self.assertEqual(self.password,'123')
+        self.assertEqual(self.new_user.username,'User')
+        self.assertEqual(self.new_user.password,'0123')
+    
+    def test_save_user(self):
+        '''
+        test case to test if new user instance has been saved
+        '''
+        self.new_user.save_user()
+        self.assertEqual(len(User.user_list),1)
 
-    def test_delete_account(self):
+class TestRecords(unittest.TestCase):
+    '''
+    test class that defines test cases for the Records class
+    '''
+    def setUp(self):
+        self.new_record = Records('Gmail','user', '0123')
+    def test_init(self):
         '''
-        test method for a deleted account
+        test case to check if instance is initalized correctly
         '''
-        self.account.save_accounts()
-        another_account = Records('Twitter')
-        another_account.delete_account()
+        self.assertEqual(self.new_record.account,'Gmail')
+        self.assertEqual(self.new_record.userName,'user')
+        self.assertEqual(self.new_record.password,'0123')
 
-    def test_password_generate(self):
+    def save_record_test(self):
         '''
-        test method for auto generate passwords
+        test case to test if the object is saved
         '''
-        self.account.save_accounts()
-        another_account = Records('twitter', 'User')
-        another_account.save_accounts()
+        self.new_record.save_details()
+        self.assertEqual(len(Records.records_list),1)
 
-    def test_dislay_accounts(self):
+    def tearDown(self):
         '''
-        test method to check displaying of accounts
+        method that does clean up after each test case has been run
         '''
-        self.account.save_account()
-        another_account = Records("Twitter","user", "user1")
-        another_account.save_account()
-        self.assertEqual(Records.display_accounts(),Records.account_credentials)
+        Records.records_list = []
 
-    def test_search_accounts(self):
-        '''
-        test method to test search functionality
-        '''
-        self.new_account.save_account()
-        another_account = Records("Twitter", "User", "123")
-        another_account.save_account()
-        self.assertEqual(another_account,Records.search_accounts("Twitter"))
+    def test_save_many_accounts(self):
+        self.new_record.save_details()
+        test_record = Records("fb","user","0123")
+        test_record.save_details()
+        self.assertEqual(len(Records.records_list),2)
 
+    def test_delete_record(self):
+        '''
+        test case for the delete function
+        '''
+        self.new_record.save_details()
+        test_record = Records('fb','user','0123')
+        test_record.save_details()
+
+        self.new_record.delete_record()
+        self.assertEqual(len(Records.records_list),1)
+
+    def test_find_records(self):
+        '''
+        test case to check if account can be searched
+        '''
+        self.new_record.save_details()
+        test_record = Records('fb','user','0123')
+        test_record.save_details()
+
+        the_record = Records.find_record('fb')
+
+        self.assertEqual(the_record.account,test_record.account)
+
+    def test_display_all_records(self):
+        '''
+        test case that displays all saved records
+        '''
+        self.assertEqual(Records.display_records(),Records.records_list)
+
+
+
+
+    
 if __name__ == "__main__":
     unittest.main()

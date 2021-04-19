@@ -2,166 +2,168 @@
 import random
 from user import User , Records
 
-
-
-def create_user(username, password):
+ 
+def create_new_user(username,password):
     '''
-    function to create a new user
+    Function to create a new user with a username and password
     '''
-    user = User(username, password)
-    return user
-
+    new_user = User(username,password)
+    return new_user
 
 def save_user(user):
     '''
-    function to save a new user
+    Function to save a new user
     '''
     user.save_user()
+def display_user():
+    """
+    Function to display existing user
+    """
+    return User.display_user()
+def login_user(username,password):
+    """
+    function that checks whether a user exist and then login the user in.
+    """
+  
+    check_user = Records.verify_user(username,password)
+    return check_user
 
-
-def create_account(account, user, password):
-    '''
-    function to a new a/c
-    '''
-    new_record = Records(account, user, password)
+def create_new_record(account,userName,password):
+    """
+    Function that creates new records for a given user account
+    """
+    new_record = Records(account,userName,password)
     return new_record
-
-
-def save_accounts(records):
-    '''
-    function to save the new a/c
-    '''
-    records.save_accounts()
-
-
-def delete_records(records):
-    '''
-    function to deleting an a/c
-    '''
-    records.delete_records()
-
-
-def search_accounts(search):
-    '''
-    function to find a/c name
-    '''
-    return Records.search_accounts(search)
-
-
-def generate_password():
-	'''
-    generating password
-    '''
-	auto_password=Records.generate_password()
-	return auto_password
-
-def copy_password(acc):
-	return Records.copy_password(acc)
-
-
+def save_record(record):
+    """
+    Function to save records
+    """
+    record. save_details()
 def display_accounts_details():
-    '''
-    function to display all accounts
-    '''
+    """
+    Function that returns all the saved accounts
+    """
     return Records.display_records()
 
-def login_user(username,password):
-	'''
-	checks for user and logs in
-	'''
+def delete_record(records):
+    """
+    Function to delete the records in the list
+    """
+    record.delete_record()
 
-	check_user = Records.verify_user(username,password)
-	return check_user
-
+def find_record(account):
+  
+    return Records.find_record(account)
 def check_records(account):
-	'''
-	creates new records
-	'''
-	return Records.if_records_exist(account)
+    
+    return Records.if_record_exist(account)
 
-def find_record(acc):
-	return Records.find_records(acc)
+def generate_password():
+    '''
+    generates a random password for the user.
+    '''
+    auto_password=Records.generate_password()
+    return auto_password
 
+def copy_password(account):
 
+    return Records.copy_password(account)
+    
+    
 def main():
-	while True:
-		print('\n')
-		print("Welcome to password locker !!!")
-		print("select the following to proceed:\n \t\t nw-To create new user \n \t\t ln-To login to your account \n \t\t dis-To Display Credentials \n \t\t del-To Delete: \n \t\t ex- to Exit")
-		short_code = input().lower()
-		print('\n')
-		if short_code == 'nw':
-			print('create username')
-			username = input()
-			while True:
-				print(" TP - To type your own pasword:\n GP - To generate random Password")
-				password_Choice = input().lower().strip()
-				if password_Choice == 'tp':
-					password = input("Enter Password\n")
-					break
-				elif password_Choice == 'gp':
-					password = generate_password()
-					break
-				else:
-					print("Invalid password please try again")
-			
-				save_user(create_user(username,password))
-				print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
-			
-		elif short_code == 'ln':
-			print('welcome')
-			print('enter user name')
-			default_user_name = input()
-			print('enter password')
-			default_user_password = input()
-			print('\n')
-			while default_user_name != 'user' or default_user_password != '0123':
-				print("Wrong username or password. Username 'user' and password '0123'")
-				print('enter user name')
-				default_user_name = input()
-				print('enter password')
-				default_user_password = input()
-				print('\n')
-			else:
-				print('login success')
-				print("Hello %s Welcome to the locker manager"%(username))
-				print('\n')	
-		elif short_code == 'dis':
-			if display_accounts_details():
-				print('Here is a list of all yor accounts:\n')
-				for account in display_accounts_details():
-					print(f" Acc:{account.acc} \n User Name:{username}\n Password:{password}")
-			else:
-				print('\n')
-				print('you dont have any saved accounts')
-		elif short_code == "fa":
-			print("Enter the name of the account you want to serach for")
-			search_acc = input().lower
-			if find_records(search_acc):
-				search_acc = find_records(search_accounts)
-				print(f"Account Name : {search_acc}")
-				print(f"User Name: {search_acc.user_name} password:{search_acc.password}")
-			else:
-				print("That Credential does not exist")
-				print('\n')
-		elif short_code == 'del':
-			print('\n')
-			print('Enter the account name you want to delete eg:Twitter')
-			search_accounts2 = input().lower()
-			if find_record(search_accounts2):
-				#search_accounts.delete_accounts()
-				print('\n')
-				print("The account: {search_accounts.accounts} has been deleted")
-				print('\n')
-			else:
-				print("There is no record of the item you are trying to delete")
-				
-		elif short_code == 'ex':
-			print(f"Have a lovely time!")
-			break
-		
-		else:
-			print('enter valid code to continue')
+    print('\n')
+    print("Welcome to password locker!!!")
+    print("Select the following to proceed: \n \t\t CA-Create New Account  \n \t\t LI-Login to your account")
+    short_code=input("").lower().strip()
+    
+    if short_code == "ca":
+        print("Write your Username")
+        username = input("User_name: ")
+        while True:
+            print(" \n\t\t TP-To type your own pasword: \n\t\t GP-To generate random Password")
+            password_Choice = input()
+            if password_Choice =='tp':
+                password = input("Enter Password\n")
+                break
+            elif password_Choice == 'gp':
+                password = generate_password()
+                break
+            else:
+                print("Invalid password please try again")
+        save_user(create_new_user(username,password))
+        print(f"Hello {username}, Your account has been logged in succesfully! Your password is: {password}")
+                
+    elif short_code == "li":
+        print("Enter your User name and your Password to log in:")
+        username = input("User name: ")
+        password = input("password: ")
+        login = login_user(username,password)
+        if login_user == login:
+            print(f"Hello {username}.Welcome To PassWord-Locker")  
+            print('\n')
+    while True:
+        print("To continue , choose one \n\t\t nw- Create a new Record list \n\t\t display- Display Credentials \n\t\t find - Find a credential \n\t\t del - Delete credential \n\t\t ex - Exit the application ")
+        short_code = input().lower().strip()
+        if short_code == "nw":
+            print("Account name")
+            account = input().lower()
+            print("Your Account username")
+            userName = input()
+            
+            while True:
+                print(" \n\t\t TP - To type your own pasword if you already have an account:")
+                password_Choice = input().lower().strip()
+                if password_Choice == 'tp':
+                    password = input("Enter Your Own Password\n")
+                    break
+                elif password_Choice == 'gp':
+                    password = generate_password()
+                    break
+                else:
+                    print("Invalid password please try again")
+            save_record(create_new_record(account,userName,password))
+            print('\n')
+            print(f"Account record for: {account} - UserName: {userName} - Password:{password} created succesfully")
+            print('\n')
+        elif short_code == 'display':
+            if display_accounts_details():
+                print("Here's your list of accounts: ")
+                for account in display_accounts_details():
+                    print(f" Account:{account.account} \n User Name:{username}\n Password:{password}")
+            else:
+                print("Sorry we cant find what you are looking for")
+                
+        elif short_code == "find":
+            print("Enter the Account Name you want to search for")
+            search_name = input().lower()
+            if find_record(search_name):
+                search_record = find_record(search_name)
+                print(f"Account Name : {search_record.account}")
+                print(f"User Name: {search_record.userName} Password :{search_record.password}")
+                
+            else:
+                print("Sorry we cant find what you are looking for")
+                print('\n')
+                
+        elif short_code == "del":
+            print("Enter the account name  you want to delete")
+            search_name = input().lower()
+            
+            if find_record(search_name):
+                search_record = find_record(search_name)
+                search_record.delete_record()
+                print('\n')
+                print(f"Your stored accounts for : {search_record.account} successfully deleted!!!")
+                print('\n')
+                
+            else:
+                print("sorry can't find the account you are looking for, kindly check again")
+                
+        elif short_code == 'gp':
+            password = generate_Password()
+            print(f" {password} You can proceed to use it to your account")
+        elif short_code == 'ex':
+            print("See you next time!")
 
 
 if __name__ == '__main__':
