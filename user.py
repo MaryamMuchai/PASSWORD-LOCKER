@@ -98,13 +98,7 @@ class Records():
         return cls.records_list
 
     def generate_password(stringLength=8):
-        password_length = 8 
-        password_characters = string.ascii_letters + string.digits + string.punctuation 
-        password = []
-        for x in range(password_length):
-            password.append(random.choice(password_characters))
-            password1 = ''
-            password1=password1.join(password)
-            print("Your generated password is :", password1)
-            return ''.join(random.choice(password) for i in range(stringLength))
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return ''.join(random.choice(password) for i in range(stringLength))
+        
         

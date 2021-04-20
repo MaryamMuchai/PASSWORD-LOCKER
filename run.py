@@ -77,7 +77,6 @@ def main():
     short_code=input("").lower().strip()
     
     if short_code == "ca":
-        print("Write your Username")
         username = input("User_name: ")
         while True:
             print(" \n\t\t TP-To type your own pasword: \n\t\t GP-To generate random Password")
@@ -102,7 +101,7 @@ def main():
             print(f"Hello {username}.Welcome To PassWord-Locker")  
             print('\n')
     while True:
-        print("To continue , choose one \n\t\t nw- Create a new Record list \n\t\t display- Display Credentials \n\t\t find - Find a credential \n\t\t del - Delete credential \n\t\t ex - Exit the application ")
+        print("choose the following short code: \n\t\t nw- Create Account \n\t\t display- Display Credentials \n\t\t find - Find a credential \n\t\t del - Delete credential \n\t\t ex - Exit the application ")
         short_code = input().lower().strip()
         if short_code == "nw":
             print("Account name")

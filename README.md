@@ -1,4 +1,5 @@
 # PASSWORD LOCKER
+
 ## AUTHOR: 
 Maryam Muchai
 ## Description:
@@ -23,4 +24,4 @@ BDD
 * To use the application: Create a user account or use the default user and password.On successful login, follow the menu instructions in order to save existing account passwords and also, to generate new ones.
 # Contact:
 maryammuchai@gmail.com
-## Copyright & License
+## Copyright & [LICENSE]()
