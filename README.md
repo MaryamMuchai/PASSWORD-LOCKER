@@ -1,5 +1,5 @@
 # PASSWORD LOCKER
-
+![screenshotbg](https://user-images.githubusercontent.com/78798386/115358327-37ff3200-a1c6-11eb-81ca-b8f79a837e76.png)
 ## AUTHOR: 
 Maryam Muchai
 ## Description:
